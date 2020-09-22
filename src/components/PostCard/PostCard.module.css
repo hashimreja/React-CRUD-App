@@ -1,0 +1,20 @@
+.PostCard{
+    width : 250px;
+    height: 250px;
+    display: inline-flex;
+    margin: 10px 10px;
+    flex-direction: column;
+    background-color: grey;
+    border-radius:10px;
+    color: white;
+    cursor: pointer;
+}
+
+.PostCard:hover{
+    background-color: lightgreen;
+
+}
+.Title {
+    margin: 5px auto;
+    padding : 10px;
+}
