@@ -18,9 +18,9 @@ class FullPost extends React.Component {
         }
     }
     render() {
-        let fullpost = <div><p>Please select a post</p></div>;
+        let fullpost;
         if (this.props.postid) {
-            fullpost = <div className="spinner-border text-success"  role="status">
+            fullpost = <div style={{display : 'flex' , marginLeft : '500px'}} className="spinner-border text-success"  role="status">
           </div>
         }
         if (this.state.fullpost) {

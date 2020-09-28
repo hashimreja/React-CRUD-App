@@ -3,7 +3,6 @@ import axios from 'axios';
 import PostCard from '../../components/PostCard/PostCard';
 import Aux from '../../hoc/Auxillary/Auxillary';
 import FullPost from '../../components/FullPost/FullPost';
-import NewPost from '../../components/NewPost/NewPost';
 
 class Posts extends React.Component{
     state = {
@@ -26,15 +25,17 @@ class Posts extends React.Component{
         })
     }
     render(){
-        const getposts = this.state.posts.map(data => {return <PostCard key={data.id} name={data.name} title={data.title}  clicked={ () => this.selectIdHandler(data.id)}/>})
+        let getposts;
+        if(this.state.posts.length !== 0){
+            getposts = this.state.posts.map(data => {return <PostCard key={data.id} name={data.name} title={data.title}  clicked={ () => this.selectIdHandler(data.id)}/>})
+        }else{
+            getposts =  <div style={{display : 'flex' , marginLeft : '500px'}} className="spinner-border text-success"  role="status"></div>
+        }
         return(
             <Aux>
         <div className='row'>
             {getposts}
             <FullPost postid={this.state.selectedid}/>
-        </div>
-        <div className='row'>
-            <NewPost/>
         </div>
         </Aux>
         )

@@ -49,7 +49,7 @@ class NewPost extends React.PureComponent {
         this.state.display ? alert = <div className="alert alert-primary" role="alert">
             Submitted Successfully!
       </div> : alert = null;
-        const addPostForm = <div>
+        const addPostForm = <div style={{border : '2px dotted black' , width : '50%',marginLeft : '25%'}}>
             <div className="form-group">
                 <label>Enter title</label>
                 <input type="text" name="title" className="form-control" onChange={this.onChangeHandler} id="exampleFormControlInput1" placeholder="enter title" />
