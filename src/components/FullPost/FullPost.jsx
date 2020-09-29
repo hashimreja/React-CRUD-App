@@ -5,10 +5,10 @@ class FullPost extends React.Component {
     state = {
         fullpost: null
     }
-    componentDidUpdate = () => {
-        if (this.props.postid) {
-            if (!this.state.fullpost || (this.state.fullpost.id !== this.props.postid))
-                axios.get('/posts/' + this.props.postid)
+    componentDidMount = () => {
+        if (this.props.match.params.id) {
+            if (!this.state.fullpost || (this.state.fullpost.id !== this.props.match.params.id))
+                axios.get('/posts/' + this.props.match.params.id)
                     .then(res => {
                         console.log(res)
                         this.setState({
@@ -18,7 +18,7 @@ class FullPost extends React.Component {
         }
     }
     render() {
-        let fullpost;
+        let fullpost =  <div style={{ display: 'flex', marginLeft: '500px' }} className="spinner-border text-success" role="status"></div>;
         if (this.props.postid) {
             fullpost = <div style={{display : 'flex' , marginLeft : '500px'}} className="spinner-border text-success"  role="status">
           </div>
@@ -26,10 +26,10 @@ class FullPost extends React.Component {
         if (this.state.fullpost) {
             fullpost =
     
-                <div class="jumbotron jumbotron-fluid">
-                    <div class="container">
-                        <h1 class="display-10">{this.state.fullpost.title}</h1>
-                        <p class="lead">{this.state.fullpost.body}</p>
+                <div className="jumbotron jumbotron-fluid">
+                    <div className="container">
+                        <h1 className="display-10">{this.state.fullpost.title}</h1>
+                        <p className="lead">{this.state.fullpost.body}</p>
                     </div>
                 </div>
 
