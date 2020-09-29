@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import './Layout.module.css';
 class Layout extends React.Component {
     render() {
         return (
@@ -7,9 +8,9 @@ class Layout extends React.Component {
                 <header style={{backgroundColor : 'black'}}>
                     <nav>
                         <ul style={{ display: 'flex' }}>
-                            <li style={{ listStyle: "none", margin: '10px' }}><Link to="/">Home</Link></li>
-                            <li style={{ listStyle: "none", margin: '10px' }}><Link to="/posts">Posts</Link></li>
-                            <li style={{ listStyle: "none", margin: '10px' }}><Link to="/addpost">Add Post</Link></li>
+                            <li style={{ listStyle: "none", margin: '10px' }}><NavLink to="/"exact activeStyle={{textDecoration:'underline',color:'white'}}>Home</NavLink></li>
+                            <li style={{ listStyle: "none", margin: '10px' }}><NavLink to="/posts" exact activeStyle={{textDecoration:'underline',color:'white'}}>Posts</NavLink></li>
+                            <li style={{ listStyle: "none", margin: '10px' }}><NavLink to="/addpost"exact activeStyle={{textDecoration:'underline',color:'white'}}>Add Post</NavLink></li>
                         </ul>
                     </nav>
                 </header>

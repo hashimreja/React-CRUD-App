@@ -10,6 +10,7 @@ class Posts extends React.Component{
         selectedid : null
     }
     componentDidMount () {
+        console.log(this.props , 'iam hereeee')
         axios.get('/posts')
         .then(res => {
             const posts = res.data.slice(0,4);
