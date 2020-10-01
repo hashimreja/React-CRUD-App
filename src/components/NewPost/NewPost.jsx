@@ -1,14 +1,15 @@
 import React from 'react';
 import Aux from '../../hoc/Auxillary/Auxillary';
 import axios from 'axios';
-
+import {Redirect} from 'react-router-dom';
 class NewPost extends React.PureComponent {
     state = {
         showform: false,
         title: null,
         content: null,
         posted: false,
-        display: false
+        display: false,
+        redirect : false
     }
     displayHandler = () => {
         setTimeout(() => {
@@ -31,7 +32,8 @@ class NewPost extends React.PureComponent {
             .then(response => {
                 this.setState({
                     posted: true,
-                    display: true
+                    display: true,
+                    redirect : true
                 });
                 this.displayHandler()
             })
@@ -43,9 +45,17 @@ class NewPost extends React.PureComponent {
         }))
     }
     render() {
+        let redirect;
+        if(this.state.redirect){ 
+            //normal redirect
+            // redirect = <Redirect to="/"/> 
+            //redierect with time out
+            setTimeout(() => {
+                this.props.history.push('/')
+            },3000)
+        }
         let newpost;
         let alert;
-
         this.state.display ? alert = <div className="alert alert-primary" role="alert">
             Submitted Successfully!
       </div> : alert = null;
@@ -65,6 +75,7 @@ class NewPost extends React.PureComponent {
 
         return (
             <Aux>
+                {redirect}
                 {newpost}
                 {alert}
             </Aux>
